@@ -160,6 +160,13 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" move between windows
+nnoremap <c-j> :wincmd j<cr>
+nnoremap <c-k> :wincmd k<cr>
+nnoremap <c-l> :wincmd l<cr>
+nnoremap <c-h> :wincmd h<cr>
+nnoremap <c-w><c-w> :wincmd p<cr>
+
 " make Y sane
 nnoremap Y y$
 
