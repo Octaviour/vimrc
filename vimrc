@@ -43,6 +43,10 @@ else
     set background=dark
 endif
 
+if has('gui')
+    set guifont=Hack:h10:cANSI
+endif
+
 " other {{{2
 " store all meta files in vim directory
 if $MYVIMRC[0] ==# '/'
