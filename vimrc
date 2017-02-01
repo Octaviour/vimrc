@@ -35,18 +35,6 @@ set incsearch            " highlight while typing search
 set ignorecase           " case insensitive
 set smartcase            " except when using capital letters
 
-" set color theme
-colorscheme solarized
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-
-if has('gui')
-    set guifont=Hack:h10:cANSI
-endif
-
 " other {{{2
 " store all meta files in vim directory
 if $MYVIMRC[0] ==# '/'
@@ -79,6 +67,18 @@ set completeopt=longest,menu
 
 " keep undo history in file
 set undofile
+
+" environment dependent settings {{{1
+" set color theme
+colorscheme solarized
+if has('gui_running')
+    " gvim
+    set background=light
+    set guifont=Hack:h10:cANSI
+else
+    " vim
+    set background=dark
+endif
 
 " plugin settings {{{1
 " Airline {{{2
