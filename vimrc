@@ -78,6 +78,12 @@ if has('gui_running')
 else
     " vim
     set background=dark
+
+    if $TERM =~# '\v^xterm'
+        "let &t_SI = "\e[6 q"
+        let &t_SI = "\e[6 q"
+        let &t_EI = "\e[2 q"
+    endif
 endif
 
 " plugin settings {{{1
