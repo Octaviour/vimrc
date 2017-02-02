@@ -157,7 +157,7 @@ nnoremap <leader>gs :Gstatus<cr>
 
 " UltiSnips {{{2
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="\<ctrl-h>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
     
 " commands {{{1
 " remove trailing whitespace
