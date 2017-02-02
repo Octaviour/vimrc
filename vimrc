@@ -155,6 +155,10 @@ nnoremap <leader>gs :Gstatus<cr>
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
 
+" UltiSnips {{{2
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="\<ctrl-h>"
+    
 " commands {{{1
 " remove trailing whitespace
 command! RemoveTrailingSpace call pvs#removetrailingspace()
