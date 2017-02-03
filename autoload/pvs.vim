@@ -150,11 +150,54 @@ function! pvs#incrementsubsequentlines()
     execute "normal 'p"
 endfunction
 
-" detect m files properly (matlab vs mathematica) {{{1
-function pvs#detectmfiletype()
-    if getline(1) =~ 'mathematica'
-        setlocal filetype=mma
+" change directory {{{1
+" automatically go to directory file is in
+" function pvs#projectroot {{{2
+function! pvs#projectroot()
+    " changes current directory to folder with .git closest to root
+    " start with directory of current file
+    let l:pwd = ''
+    cd %:p:h
+
+    " move up and remember highest .git directory found
+    while 1
+        " remember previous directory
+        let l:prevdir = getcwd()
+
+        " check if .git directory present
+        if isdirectory('.git')
+            let l:pwd = getcwd()
+        endif
+
+        " move up one directory and check if at root, if cannot move give up
+        " TODO do not catch everything
+        try | cd .. | catch /.*/ | break | endtry
+        if getcwd() ==# l:prevdir
+            break
+        endif
+    endwhile
+
+    " output results
+    return l:pwd
+endfunction
+
+" function pvs#chdir {{{2
+function! pvs#chdir()
+    " check if a file is currently loaded
+    if len(expand('%')) > 0
+        let l:dir = pvs#projectroot()
+        if l:dir !=# ''
+            " if a project root was found
+            execute 'cd '.l:dir
+        else
+            " return file path
+            cd %:p:h
+        endif
     else
-        setlocal filetype=matlab
+        " default to HOME directory
+        cd $HOME
+    endif
+endfunction
+
     endif
 endfunction

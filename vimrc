@@ -162,10 +162,18 @@ nnoremap <leader>gs :Gstatus<cr>
 " UltiSnips {{{2
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    
+
 " commands {{{1
 " remove trailing whitespace
 command! RemoveTrailingSpace call pvs#removetrailingspace()
+
+" autocommands {{{1
+" change directory {{{2
+augroup PvsChdir
+    autocmd!
+    autocmd BufEnter * call pvs#chdir()
+augroup END
+
 
 " global mappings {{{1
 " use space as leader
