@@ -199,5 +199,36 @@ function! pvs#chdir()
     endif
 endfunction
 
+" Filetype specific {{{1
+" TODO: currently there needs to be a main.tex in the pwd
+function! pvs#texmainfname()
+    " if exists main.tex is the main file
+    " otherwise find a file that contains the \documentclass
+    let l:main = globpath(getcwd(), '**/main.tex', 0, 1)
+    if len(l:main) == 1
+        return l:main[0]
     endif
+    echom 'ERROR: no main latex file found'
+    return ''
+endfunction
+
+function! pvs#texviewer()
+    " opens the desired pdf viewer
+    let l:root = fnamemodify(pvs#texmainfname(), ':p:r')
+    if executable('sumatrapdf')
+        execute 'Dispatch sumatrapdf '.shellescape(l:root.'.pdf')
+    endif
+    return l:root
+endfunction
+
+function! pvs#texcompile()
+    " compiles LaTeX code once
+    if !executable('pdflatex')
+        echom 'ERROR: pdflatex not found'
+        return
+    endif
+    let l:texfile = pvs#texmainfname()
+    let l:outdir = 'output'
+    let l:cmd = 'Dispatch pdflatex -halt-on-error -interaction=nonstopmode -synctex=1 -aux-directory='
+    execute l:cmd.shellescape(l:outdir).' '.shellescape(l:texfile)
 endfunction
