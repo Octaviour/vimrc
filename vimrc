@@ -67,6 +67,9 @@ set autoread
 set wildmenu
 set wildmode=list:longest,full
 
+" search entire subtree for files
+set path+=**
+
 " set <c-n> completion
 set completeopt=longest,menu
 
@@ -189,6 +192,10 @@ nnoremap <space> <nop>
 let mapleader=' '
 let maplocalleader=' '
 
+" jump between files
+nnoremap <leader>b :buffer 
+nnoremap <leader>f :find 
+
 " move display line
 nnoremap j gj
 nnoremap k gk
@@ -216,7 +223,6 @@ nnoremap ' `
 " reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
-
 
 nnoremap <leader>w :write<cr>
 
