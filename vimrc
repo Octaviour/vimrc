@@ -30,6 +30,10 @@ set number
 set relativenumber
 set laststatus=2
 
+" no hidden characters
+set listchars=tab:➜\ ,trail:█,extends:,precedes:,nbsp:▁
+set list
+
 " search options
 set hlsearch             " highlight search results
 set incsearch            " highlight while typing search
