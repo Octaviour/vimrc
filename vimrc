@@ -16,6 +16,7 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set breakindent
 
 " highlight wide line
 let &colorcolumn=join(range(81,999), ',')
