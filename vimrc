@@ -250,6 +250,14 @@ nnoremap <leader>rts :call pvs#removetrailingspace()<cr>
 " increment counter on subsequent lines
 nnoremap <leader><c-a> :call pvs#incrementsubsequentlines()<cr>
 
+" <leader>C opens the console at cwd
+if has('gui')
+    if has('win32')
+        " running 32 bit or 64 bit windows
+        map <leader>C :! cmd<cr>
+    endif
+endif
+
 " map in( etc to next brace {{{2
 onoremap in( :call pvs#selectclosestbracket('(', 'i(')<cr>
 onoremap in) :call pvs#selectclosestbracket('(', 'i)')<cr>
