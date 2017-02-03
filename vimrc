@@ -163,6 +163,14 @@ nnoremap <leader>gs :Gstatus<cr>
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Vimtex {{{2
+if executable('sumatrapdf')
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options
+                \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+endif
+
 " commands {{{1
 " remove trailing whitespace
 command! RemoveTrailingSpace call pvs#removetrailingspace()
