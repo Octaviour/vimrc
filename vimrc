@@ -129,7 +129,7 @@ let g:airline_symbols.linenr = ''
 " CtrlP {{{2
 " set command to open
 let g:ctrlp_map = '<Space>p'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
 
 " set cache directory
 let g:ctrlp_cache_dir = $HOME.'/vimfiles/.cache/ctrlp'
@@ -181,10 +181,6 @@ command! RemoveTrailingSpace call pvs#removetrailingspace()
 
 " autocommands {{{1
 " change directory {{{2
-augroup PvsChdir
-    autocmd!
-    autocmd BufEnter * call pvs#chdir()
-augroup END
 
 
 " global mappings {{{1
@@ -224,6 +220,9 @@ nnoremap ' `
 " reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
+
+" change working directory
+nnoremap <leader>cd :lcd %:h<cr>:pwd<cr>
 
 nnoremap <leader>w :write<cr>
 
