@@ -238,6 +238,9 @@ nnoremap <leader>ed :edit<space>
 " select last edit
 nnoremap gl `[v`]
 
+" interact with git
+nnoremap <leader>gs :Gstatus<cr>
+
 " change case of symbols
 nnoremap ~ :call pvs#changecase()<cr>
 
